@@ -1,130 +1,198 @@
-# Astro Boilerplate with TypeScript and Tailwind CSS [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Ixartz)](https://twitter.com/ixartz)
+# Nebulix | Astro + Static CMS
 
-🚀 Astro Boilerplate is starter code for your blog or portfolio based on Astro
-with Tailwind CSS 3.0. ⚡️ Made with Astro, TypeScript, ESLint, Prettier,
-Tailwind CSS.
+[![License: CC BY-ND 4.0](https://img.shields.io/badge/License-CC_BY--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nd/4.0/)
 
-Clone this project and use it to create your own Astro blog. You can check the
-[Astro templates demo](https://creativedesignsguru.com/demo/astro-boilerplate/).
 
-## Features
 
-A complete Blog feature:
 
-- 🎈 Syntax Highlighting
-- 🤖 SEO friendly with sitemap.xml and robots.txt
-- ⚙️ RSS feed
-- 📖 Pagination
-- 🌈 Include a dark blog theme
-- ⬇️ Markdown
-- 📦 Image lazy loading
-- 💎 Responsive design
+A Universe of Possibilities: Blogs, Portfolios, Webshop, Restaurant Menus, and Beyond.
 
-Developer experience first:
 
-- 🔥 Astro
-- 🎨 Tailwind CSS with aspect ratio and typography plugin
-- 🎉 TypeScript
-- ✏️ ESLint compatible with .astro files
-- 🛠 Prettier compatible with .astro files
-- 🦊 Husky
-- 🚫 lint-staged
-- 🚨 Commitlint
-- 🔧 One-click deploy on Netlify (or, manual if you prefer)
 
-ESLint with:
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-00-start.jpg)
 
-- Airbnb styled guide
-- TypeScript compatible
-- Astro compatible
-- Automatically remove unused imports
-- Import sorting
-- Tailwind CSS plugin
+## Notice
 
-### Philosophy
+__This theme is currently under development, and until we reach version 1.0.0, there is a possibility that upgrading could lead to errors.__
 
-- Minimal code
-- SEO-friendly
-- 🚀 Production-ready
+## 🛠️Deploy
+Easily deploy this theme to Netlify with a single click, and conveniently update environment variables afterward on Netlify.
 
-### Requirements
 
-- Node.js and npm
 
-#### Optional
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/unfolding-io/nebulix#BLOG_SLUG=blog&PORTFOLIO_SLUG=work&SHOP_SLUG=shop&MENU_SLUG=menu&WEBSITE_LANGUAGE=en&CURRENCY=USD&UNITS=metric&NODE_VERSION=18)
 
-- [nvm](https://github.com/nvm-sh/nvm)
-- [volta](https://volta.sh/)
 
-While Astro-boilerplate should work with the latest Node version, it has been
-tested with the versions in .nvmrc & the bottom of package.json. At current
-writing, that's Node v16.15.1
+## Constellations of Features:
 
-### Getting started
+-   📰 Chart Your Path with a Blog
+-   🖼 Showcase Your Stellar Portfolio
+-   🍝 Illuminate Culinary Voyages with a Restaurant Menu
+-   🛒 Launch Your Webshop Powered by Snipcart
+-   🔍 SEO Constellations: Canonical URLs and OpenGraph radiance
+-   🧭 Navigational Maps: Sitemap Support
+-   📑Language of the Stars: Markdown & MDX Support
+-   📝 Static CMS Ready for Galactic Exploration
+- 	🐵 Mailchimp newsletter form
+-   🕵 Unveil Hidden Constellations with Full Text Search using Pagefind
 
-Run the following command on your local environment:
+## ♻️ Page Speed and Emissions
+Experience the green and swift capabilities of Nebulix. With an impressively low emission of 0.05g - 0.07g CO2 per page visit and consistently achieving a lighthouse score between 98 and 100, Nebulix ensures both speed and environmental consciousness for your website.
 
-``` bash
-git clone --depth=1 https://github.com/ixartz/Astro-boilerplate
-cd my-project-name
-npm install
+## 🚀 Getting Started
+
+### 1. Setting up the .env file
+
+rename the `env.txt` to `.env` and fill in your details
+
+```ENV
+BLOG_SLUG=blog
+PORTFOLIO_SLUG=work
+SHOP_SLUG=shop
+MENU_SLUG=menu
+WEBSITE_LANGUAGE=en
+CURRENCY=USD
+UNITS=metric
+SNIPCART_KEY=<your-snipcart-public-key>
+NODE_VERSION=18
+NEWSLETTER_PROVIDER=mailchimp
+MAILCHIMP_API_KEY=XXXXXXXXXXXXXXXX-us21
+MAILCHIMP_SERVER_PREFIX=us21	
+MAILCHIMP_LIST_ID=XXXXXXXXX
+
 ```
 
-Then, you can run locally in development mode with live reload:
+### 2. Configure your Static CMS Backend
 
-``` bash
-npm run dev
+Navigate to `src/pages/admin.astro` and provide your Git repository details. You can find a list of all supported Git backends at:
+<https://www.staticcms.org/docs/backends-overview>
+
+
+**_Gitlab Example:_**
+
+```javascript
+
+const config = {
+	locale: lang,
+	site_url: url,
+	logo_url: 'https://nebulix.unfolding.io/nebulix-logo.svg',
+	local_backend: true,
+	backend: {
+		name: 'gitlab',
+		repo: '/<your-gitlab-repo>',
+		auth_type: 'pkce', // Required for pkce
+		app_id: 'xxxx', // Application ID from your GitLab settings
+		commit_messages: {
+			create: 'Create {{collection}} "{{slug}}"',
+			update: 'Update {{collection}} "{{slug}}"',
+			delete: 'Delete {{collection}} "{{slug}}"',
+			uploadMedia: 'Upload "{{path}}"',
+			deleteMedia: 'Delete "{{path}}"'
+		}
+	},
+	search: 'true',
+    ....
+}
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your favorite browser
-to see your project.
+### 3. Add your site to the astro config
 
-### Deploy to production (manual)
+```javascript
 
-You can create an optimized production build with:
+export default defineConfig({
+	site: 'https://your-website.com',
+    ....
 
-```shell
-npm run build
 ```
 
-Now, your blog is ready to be deployed. All generated files are located at
-`dist` folder, which you can deploy the folder to any hosting service you
-prefer.
+### 4. Install dependencies
 
-### Deploy to Netlify
+```bash
+$ npm install
+```
 
-Clone this repository on own GitHub account and deploy to Netlify:
+### 🛠️ 5. Start Development server
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ixartz/Astro-boilerplate)
+```bash
+$ npm run dev
+```
 
-## 🧞 Commands
+If you wish to engage the local backend:
+
+```bash
+$ npm run cms-proxy-server
+```
+
+Now you can open Static CMS on http://localhost:4321/admin/
+
+
+## ❌ Removing Collections
+If your cosmic journey excludes a blog, portfolio, shop, or restaurant menu, simply remove the corresponding documents from the `src/content`. Additionally, erase the page templates from `src/pages` .
+
+
+## 🛸 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command           | Action                                       |
-|:----------------  |:-------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-| `npm run clean`   | Remove `./dist` folder                       |
-| `npm run lint`    | Run ESLint and report styling error          |
+| Command                    | Action                                           |
+| :------------------------- | :----------------------------------------------- |
+| `npm install`              | Installs dependencies                            |
+| `npm run dev`              | Starts local dev server at `localhost:4321`      |
+| `npm run cms-proxy-server` | Starts Static CMS proxy server for local-backend |
+| `npm run build`            | Build your production site to `./dist/`          |
+| `npm run preview`          | Preview your build locally, before deploying     |
+| `npm run astro ...`        | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help`  | Get help using the Astro CLI                     |
 
-### Contributions
+## 📁 Documentation
+Learn how to harness the power of Static CMS and craft a distinctive website that stands out from the crowd.
 
-Everyone is welcome to contribute to this project.
-Feel free to open an issue if you have question or found a bug.
+[Documentation](https://nebulix.unfolding.io/blog/tag/docs)
 
-### Additional Checks
+## 🌐 Demo
 
-This README.md was linted with
-[markdownlint](https://github.com/igorshubovych/markdownlint-cli)
+Witness the extraordinary speed of Nebulix in action.
 
-### License
+[Demo](https://nebulix.unfolding.io)
 
-Licensed under the MIT License, Copyright © 2022
+## 👀 Want to learn more about Astro?
 
----
+Check out [Astro documentation](https://docs.astro.build) or jump into Astro's [Discord server](https://astro.build/chat).
 
-Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Ixartz)](https://twitter.com/ixartz)
+## 📚 Tech Stack
+
+Astro, MDX, Vue, TailwindCSS, Pagefind, Snipcart
+
+## 🛟 Support
+
+If you encounter any issues or bugs, we encourage you to open an issue in the repository. To help us quickly address the problem, please provide detailed information about the bug and steps to reproduce it.
+
+For those seeking priority assistance, we offer premium support services. Feel free to reach out to us by email at [hello@unfolding.io.](mailto:hello@unfolding.io.) We're here to help!
+
+
+## 🚕 Roadmap
+
+As we journey towards v1.0, our path includes enriching the page builder with a diverse array of new blocks, upgrading dependencies to ensure optimal performance, and introducing exciting features. We're eager to hear from you! If you have any feature requests, please feel free to reach out and let us know.
+
+## 📸 Screenshots
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-01-shop.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-02-shop-category.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-03-shop-product.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-04-shop-product.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-05-shop-product-dark.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-06-blogpost.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-07-portfolio.jpg)
+
+![Nebulix](https://nebulix.unfolding.io/screenshots/nebulix-08-footer.jpg)
+
+
+
+
